@@ -6,8 +6,7 @@ public class App {
         System.out.println("Enter a password:");
         String pass = scan.nextLine();
         
-        
-        System.out.println(ifUpperCase(pass) == true && ifLowerCase(pass) == true && ifSpecial(pass) == true && ifNumber(pass) == true);
+        //System.out.println(ifUpperCase(pass)+""+ ifLowerCase(pass) +ifSpecial(pass) +ifNumber(pass));
         if(ifUpperCase(pass)&&ifLowerCase(pass)&&ifSpecial(pass)&&ifNumber(pass)&&true) {
             if(pass.length()>=12) {
                 System.out.println("Strong password");
@@ -22,15 +21,14 @@ public class App {
     }
         
     public static boolean ifUpperCase(String pass) {
-        boolean U = false;
         for(int i=0;i<pass.length();i++) {
             String chr = pass.substring(i,i+1);
             int compare = ("Z").compareTo(chr);
             if (compare>=0 && compare<=25){
-                U = true; // get rid of flag?
+                return true;
             }
         }
-        return U;
+        return false;
     }
     public static boolean checkRange(String a, String b, String test) {
         int compare_a = test.compareTo(a);
@@ -52,14 +50,14 @@ public class App {
     public static boolean ifSpecial(String pass) {
         for(int i=0;i<pass.length();i++) {
             String chr = pass.substring(i,i+1);
-            int compare = (chr).compareTo(" "); //unable to use null
-            if (compare>=123 && compare<=126){
+            int compare = ("~").compareTo(chr); //unable to use null
+            if (compare>=0 && compare<=3){
                 return true;
-            } else if (compare>=91 && compare<=96) {
+            } else if (compare>=30 && compare<=35) {
                 return true;
-            } else if (compare>=58 && compare<=61) {
+            } else if (compare>=70 && compare<=65) {
                 return true;
-            } else if (compare>=33 && compare<=47) {
+            } else if (compare>=79 && compare<=93) {
                 return true;
             }
         }
@@ -68,8 +66,8 @@ public class App {
     public static boolean ifNumber(String pass) {
         for(int i=0;i<pass.length();i++) {
             String chr = pass.substring(i,i+1);
-            int compare = (chr).compareTo(null);
-            if (compare>=48 && compare<=57){
+            int compare = (chr).compareTo(" ");
+            if (compare>=16 && compare<=25){
                 return true;
             }
         }
